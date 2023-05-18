@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import PixIcon from "@mui/icons-material/Pix";
 import { Box, Typography } from "@mui/material";
+
 import FlexBetween from "@/components/FlexBetween";
 import useNavbar from "./useNavbar";
 
-type Props = {};
-
-const Navbar = ({}: Props) => {
+const Navbar = () => {
   const { 
     palette,
     selected,
@@ -34,7 +33,7 @@ const Navbar = ({}: Props) => {
               textDecoration: "inherit",
             }}
           >
-            dashboard
+            Dashboard
           </Link>
         </Box>
         <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
@@ -46,7 +45,7 @@ const Navbar = ({}: Props) => {
               textDecoration: "inherit",
             }}
           >
-            predictions
+            Predictions
           </Link>
         </Box>
       </FlexBetween>
