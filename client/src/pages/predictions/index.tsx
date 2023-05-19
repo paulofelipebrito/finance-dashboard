@@ -1,9 +1,6 @@
-import { useMemo, useState } from "react";
-
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
-import { useGetKpisQuery } from "@/state/api";
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import {
   CartesianGrid,
   Label,
@@ -15,33 +12,10 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import regression, { DataPoint } from "regression";
+import usePredictions from "./usePredictions";
 
 const Predictions = () => {
-  const { palette } = useTheme();
-  const [isPredictions, setIsPredictions] = useState(false);
-  const { data: kpiData } = useGetKpisQuery();
-
-  const formattedData = useMemo(() => {
-    if (!kpiData) return [];
-    const monthData = kpiData[0].monthlyData;
-
-    const formatted: Array<DataPoint> = monthData.map(
-      ({ revenue }, i: number) => {
-        return [i, revenue];
-      }
-    );
-    const regressionLine = regression.linear(formatted);
-
-    return monthData.map(({ month, revenue }, i: number) => {
-      return {
-        name: month,
-        "Actual Revenue": revenue,
-        "Regression Line": regressionLine.points[i][1],
-        "Predicted Revenue": regressionLine.predict(i + 12)[1],
-      };
-    });
-  }, [kpiData]);
+  const { palette, isPredictions, setIsPredictions, formattedData } = usePredictions();
 
   return (
     <DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">

@@ -7,12 +7,13 @@ type Props = {
   sideText: string;
   subtitle?: string;
   icon?: React.ReactNode;
+  margin?: string;
 };
 
-const BoxHeader = ({ icon, title, subtitle, sideText }: Props) => {
+const BoxHeader = ({ icon, title, subtitle, sideText, margin }: Props) => {
   const { palette } = useTheme();
   return (
-    <FlexBetween color={palette.grey[400]} margin="1.5rem 1rem 0 1rem">
+    <FlexBetween color={palette.grey[400]} margin={margin ? margin : "1.5rem 1rem 0 1rem"}>
       <FlexBetween>
         {icon}
         <Box width="100%">

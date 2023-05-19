@@ -1,7 +1,7 @@
 import { Box, useMediaQuery } from "@mui/material";
-import FirstRow from "./rows/FirstRow.tsx";
-import SecondRow from "./rows/SecondRow.tsx";
-import ThirdRow from "./rows/ThirdRow.tsx";
+import FirstRow from "./components/rows/FirstRow.tsx";
+import SecondRow from "./components/rows/SecondRow.tsx";
+import ThirdRow from "./components/rows/ThirdRow.tsx";
 
 const gridTemplateLargeScreens = `
   "a b c"
